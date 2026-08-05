@@ -11,7 +11,7 @@ export const SEO: React.FC<SEOProps> = ({
   title = 'Mohammad Walid Rahman | Senior Full-Stack Engineer',
   description = 'Apple-grade full-stack software engineer specializing in React 18, TypeScript, Node.js, Express, MongoDB, and cloud architecture.',
   url = 'https://walidrahman.dev',
-  image = 'https://walidrahman.dev/assets/walid_hero.png',
+  image = 'https://walidrahman.dev/assets/profile.jpg',
 }) => {
   useEffect(() => {
     // 1. Update Document Title

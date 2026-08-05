@@ -1,7 +1,7 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
 import { ASSETS } from '../../assets';
-import { ArrowRight, Download, Github, Linkedin, Mail, Twitter, ChevronDown } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Mail, Twitter, ChevronDown, Facebook, Instagram } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   const { availabilityStatus, availabilitySubtext, bio, socials } = PORTFOLIO_DATA;
@@ -50,7 +50,7 @@ export const HeroSection: React.FC = () => {
             </a>
 
             <a href="#contact" className="light-pill-btn hover:no-underline">
-              <span>Download CV</span>
+              <span>Download Resume</span>
               <Download className="w-4 h-4 text-gray-500 dark:text-gray-400" />
             </a>
           </div>
@@ -95,6 +95,33 @@ export const HeroSection: React.FC = () => {
               >
                 <Twitter className="w-4 h-4" />
               </a>
+              <a
+                href={socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] hover:border-indigo-300 hover:scale-110 transition-all duration-200"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href={socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] hover:border-indigo-300 hover:scale-110 transition-all duration-200"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href={socials.discord}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Discord"
+                className="w-9 h-9 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] hover:border-indigo-300 hover:scale-110 transition-all duration-200"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
@@ -105,7 +132,7 @@ export const HeroSection: React.FC = () => {
           <div className="relative w-72 h-80 sm:w-88 sm:h-96 lg:w-[380px] lg:h-[440px] rounded-3xl bg-gradient-to-tr from-indigo-100 via-blue-50 to-slate-200/60 dark:from-indigo-950/40 dark:via-blue-900/20 dark:to-slate-800/30 p-3 sm:p-4 shadow-sm flex items-end justify-center">
             {/* Avatar Photo */}
             <img
-              src={ASSETS.walidHero}
+              src={ASSETS.profilePic}
               alt="Mohammad Walid Rahman"
               className="w-full h-full object-cover object-top rounded-2xl shadow-md"
             />

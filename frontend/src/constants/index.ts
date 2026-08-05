@@ -23,8 +23,8 @@ export const PORTFOLIO_DATA = {
     portfolio: 'https://walid-rahman-portfolio.vercel.app/',
   },
   contact: {
-    email: 'walidrahmanbd@gmail.com',
-    phone: '+880 1621-XXXXXX',
+    email: 'walidrahman.officials@gmail.com',
+    phone: '+880 1648-177033',
     location: 'Uttara, Dhaka-1230, Bangladesh',
   },
   about: {
@@ -46,7 +46,7 @@ export const PORTFOLIO_DATA = {
     badge: 'My Skills',
     title: 'Technologies I Work With',
     subtitle: 'Always learning, always building. Here are the technologies I work with:',
-    categories: ['All', 'Frontend', 'Backend', 'Database', 'Tools'],
+    categories: ['All', 'Frontend', 'Backend', 'Database', 'Mobile', 'Tools'],
     items: [
       { name: 'React.js', category: 'Frontend', color: '#61DAFB', icon: 'react' },
       { name: 'JavaScript', category: 'Frontend', color: '#F7DF1E', icon: 'js' },
@@ -62,7 +62,9 @@ export const PORTFOLIO_DATA = {
       { name: 'GitHub', category: 'Tools', color: '#181717', icon: 'github' },
       { name: 'Vercel', category: 'Tools', color: '#000000', icon: 'vercel' },
       { name: 'VS Code', category: 'Tools', color: '#007ACC', icon: 'vscode' },
-      { name: 'Flutter', category: 'Tools', color: '#02569B', icon: 'flutter' },
+      { name: 'Flutter', category: 'Mobile', color: '#02569B', icon: 'flutter' },
+      { name: 'Dart', category: 'Mobile', color: '#4479A1', icon: 'dart' },
+      { name: 'PHP', category: 'Backend', color: '#4479A1', icon: 'dart' },
     ],
   },
   projects: {
@@ -72,7 +74,7 @@ export const PORTFOLIO_DATA = {
     items: [
       {
         _id: '1',
-        title: 'VeriChain – Product Authenticity Platform',
+        title: 'VeriChain – Product Authenticity Platform And Marketplace',
         description:
           'Full-stack MERN platform combining e-commerce, product authenticity verification, and supply chain traceability to help users verify genuine products, track ownership history, and prevent counterfeit trading.',
         tags: ['TypeScript', 'MERN', 'JWT', 'Supply Chain'],
@@ -87,7 +89,7 @@ export const PORTFOLIO_DATA = {
           'Real-time chat application built with the MERN stack supporting one-on-one and group conversations over Socket.IO. Features JWT-based authentication and a responsive chat UI.',
         tags: ['Socket.IO', 'React', 'Node.js', 'MongoDB'],
         image: ASSETS.chatapp,
-        demoUrl: 'https://github.com/10bitsofwalid/chat-app',
+        demoUrl: 'https://local-chat-site.vercel.app',
         githubUrl: 'https://github.com/10bitsofwalid/chat-app',
       },
       {
@@ -97,7 +99,7 @@ export const PORTFOLIO_DATA = {
           'Full-stack expense tracking web app with user authentication built with Express and MongoDB. Supports account registration, secure login sessions, and complete CRUD management of personal expenses with live balance updates.',
         tags: ['JavaScript', 'Express.js', 'MongoDB', 'Auth'],
         image: ASSETS.budgettracker,
-        demoUrl: 'https://github.com/10bitsofwalid/online-budget-tracker',
+        demoUrl: 'https://youronlinebudgettracker.vercel.app',
         githubUrl: 'https://github.com/10bitsofwalid/online-budget-tracker',
       },
     ],
@@ -108,7 +110,7 @@ export const PORTFOLIO_DATA = {
     subtitle: 'A timeline of my professional journey and key experiences.',
     items: [
       {
-        role: 'Freelance Full Stack Developer',
+        role: 'Full Stack Developer',
         company: 'Self-Employed',
         period: '2023 – Present',
         description:
@@ -144,14 +146,14 @@ export const PORTFOLIO_DATA = {
       },
       {
         degree: 'Higher Secondary Certificate (Science)',
-        institution: 'Notre Dame College, Dhaka',
+        institution: 'Milestone College',
         period: '2018 – 2020',
         description:
           'Science background with strong foundation in mathematics, physics and problem solving.',
       },
       {
         degree: 'Secondary School Certificate (Science)',
-        institution: 'St. Joseph Higher Secondary School',
+        institution: 'Milestone School And College',
         period: '2016 – 2018',
         description:
           'Built the academic foundation with a focus on sciences and developed an early passion for technology and logic.',

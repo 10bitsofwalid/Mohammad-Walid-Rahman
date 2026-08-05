@@ -17,7 +17,7 @@ export const AboutSection: React.FC = () => {
         <div className="lg:col-span-5 relative flex justify-center">
           <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 group">
             <img
-              src={ASSETS.walidHero}
+              src={ASSETS.profilePic}
               alt={authorName}
               className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />

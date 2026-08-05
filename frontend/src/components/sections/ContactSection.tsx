@@ -73,7 +73,7 @@ export const ContactSection: React.FC = () => {
                 <div className="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-[#4F46E5] dark:text-indigo-300 flex items-center justify-center shrink-0">
                   <MapPin className="w-4 h-4" aria-hidden="true" />
                 </div>
-                <span>{contact.location}</span>
+                <span> {contact.location} </span>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
 import { NAV_ROUTES } from '../../router/routes';
-import { Github, Linkedin, Mail, Twitter, ArrowUp, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter, ArrowUp, Heart, Coffee, Facebook, Instagram } from 'lucide-react';
 import { Container } from './Container';
 
 export const Footer: React.FC = () => {
@@ -102,6 +102,24 @@ export const Footer: React.FC = () => {
             >
               <Twitter className="w-4 h-4" />
             </a>
+            <a
+              href={socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] bg-[var(--color-surface-base)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] hover:border-[var(--color-accent-primary)] hover:scale-110 transition-all duration-200"
+              aria-label="Facebook Profile"
+            >
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a
+              href={socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] bg-[var(--color-surface-base)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] hover:border-[var(--color-accent-primary)] hover:scale-110 transition-all duration-200"
+              aria-label="Instagram Profile"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
 
             {/* Back to Top Button */}
             <button
@@ -119,9 +137,8 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--color-text-muted)] gap-2">
           <div>© {currentYear} {authorName}. All rights reserved.</div>
           <div className="flex items-center gap-1">
-            <span>Made with</span>
-            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline mx-0.5" />
-            <span>and lots of coffee</span>
+            <span>Made with lots of coffee</span>
+            <Coffee className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline mx-0.5" />
           </div>
         </div>
       </Container>
