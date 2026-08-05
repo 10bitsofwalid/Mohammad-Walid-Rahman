@@ -1,0 +1,18 @@
+/* ============================================
+   Custom Design System — imported first
+   (CSS @import must precede all other rules)
+   ============================================ */
+@import './variables.css';
+@import './reset.css';
+@import './typography.css';
+@import './glassmorphism.css';
+@import './animations.css';
+@import './responsive.css';
+
+/* ============================================
+   Tailwind CSS v3 utility layer
+   (declared after @import per CSS spec)
+   ============================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

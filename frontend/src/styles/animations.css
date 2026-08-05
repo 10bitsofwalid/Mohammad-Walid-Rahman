@@ -1,0 +1,95 @@
+/* Apple Animation Tokens & Keyframe Utility Classes */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 16px var(--color-accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 32px var(--color-accent-glow);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-base) 25%,
+    var(--color-surface-hover) 50%,
+    var(--color-surface-base) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--duration-normal) var(--ease-spring) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: floatSlow 4s infinite ease-in-out;
+}
+
+/* WCAG 2.1 AA Focus-Visible System */
+*:focus-visible {
+  outline: 3px solid var(--color-accent-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px var(--color-accent-glow) !important;
+}
+
+/* WCAG 2.1 AA Prefers-Reduced-Motion System */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-shimmer,
+  .animate-fade-in-up,
+  .animate-pulse-glow,
+  .animate-float {
+    animation: none !important;
+    transform: none !important;
+  }
+}
