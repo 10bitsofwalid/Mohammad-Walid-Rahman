@@ -11,7 +11,7 @@ export const PORTFOLIO_DATA = {
   roleTitle: 'Full Stack Developer',
   availabilityStatus: 'Open to Opportunities',
   availabilitySubtext: "Let's build something amazing together!",
-  bio: "Software Engineering undergraduate at Daffodil International University, building real projects to learn full-stack development — from C-based data structure systems to Node.js/Express APIs, React frontends and Cross Platforms.",
+  bio: 'Software Engineering undergraduate at Daffodil International University, building real projects to learn full-stack development — from C-based data structure systems to Node.js/Express APIs, React frontends and Cross Platforms.',
   socials: {
     github: 'https://github.com/10bitsofwalid',
     linkedin: 'https://www.linkedin.com/in/mohammad-walid-rahman',
@@ -32,7 +32,7 @@ export const PORTFOLIO_DATA = {
     title: 'Turning Ideas Into Real-World Solutions',
     paragraphs: [
       "I'm a Software Engineering undergraduate at Daffodil International University, building real projects to learn full-stack development from the ground up — from C-based data structure systems to Node.js/Express APIs, React frontends and Cross Platforms.",
-      "I enjoy turning ideas into working, deployed applications — not just tutorials. Currently exploring Flutter, scalable system design, and web security fundamentals. Open to internships, entry-level Software Engineer roles, and open-source collaboration.",
+      'I enjoy turning ideas into working, deployed applications — not just tutorials. Currently exploring Flutter, scalable system design, and web security fundamentals. Open to internships, entry-level Software Engineer roles, and open-source collaboration.',
     ],
     experienceBadge: '1+ Year Experience',
     stats: [
@@ -160,6 +160,26 @@ export const PORTFOLIO_DATA = {
       },
     ],
   },
+  githubActivity: {
+    badge: 'Coding Activity',
+    title: 'GitHub & Open Source Activity',
+    subtitle: 'My daily commits, contribution graph, and code statistics on GitHub.',
+    username: '10bitsofwalid',
+    stats: [
+      { label: 'Public Repos', value: '25+' },
+      { label: 'Total Contributions', value: '500+' },
+      { label: 'Primary Language', value: 'TypeScript' },
+      { label: 'Followers', value: '11' },
+    ],
+    languages: [
+      { name: 'TypeScript', percentage: 42, color: '#3178C6' },
+      { name: 'JavaScript', percentage: 28, color: '#F7DF1E' },
+      { name: 'HTML / CSS', percentage: 15, color: '#E34F26' },
+      { name: 'C / C++', percentage: 9, color: '#A8B9CC' },
+      { name: 'Dart / Other', percentage: 6, color: '#00B4AB' },
+    ],
+  },
+
   beyondCode: {
     badge: 'Beyond Code',
     title: 'What Drives Me',

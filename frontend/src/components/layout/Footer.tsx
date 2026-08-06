@@ -1,7 +1,16 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
 import { NAV_ROUTES } from '../../router/routes';
-import { Github, Linkedin, Mail, Twitter, ArrowUp, Heart, Coffee, Facebook, Instagram } from 'lucide-react';
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  ArrowUp,
+  Coffee,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 import { Container } from './Container';
 
 export const Footer: React.FC = () => {
@@ -135,7 +144,9 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Sub-footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--color-text-muted)] gap-2">
-          <div>© {currentYear} {authorName}. All rights reserved.</div>
+          <div>
+            © {currentYear} {authorName}. All rights reserved.
+          </div>
           <div className="flex items-center gap-1">
             <span>Made with lots of coffee</span>
             <Coffee className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline mx-0.5" />

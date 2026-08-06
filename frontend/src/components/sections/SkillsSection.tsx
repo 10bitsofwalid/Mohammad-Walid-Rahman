@@ -4,24 +4,13 @@ import { Zap } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 // High-fidelity tech logos matching the design screenshot
-const TechLogoIcon: React.FC<{ icon: string; color: string }> = ({
-  icon,
-  color,
-}) => {
+const TechLogoIcon: React.FC<{ icon: string; color: string }> = ({ icon, color }) => {
   switch (icon) {
     case 'react':
       return (
         <svg viewBox="0 0 100 100" className="w-10 h-10" fill="none">
           <circle cx="50" cy="50" r="8" fill="#61DAFB" />
-          <ellipse
-            cx="50"
-            cy="50"
-            rx="42"
-            ry="16"
-            fill="none"
-            stroke="#61DAFB"
-            strokeWidth="5"
-          />
+          <ellipse cx="50" cy="50" rx="42" ry="16" fill="none" stroke="#61DAFB" strokeWidth="5" />
           <ellipse
             cx="50"
             cy="50"
@@ -59,11 +48,7 @@ const TechLogoIcon: React.FC<{ icon: string; color: string }> = ({
     case 'node':
       return (
         <svg viewBox="0 0 100 100" className="w-10 h-10" fill="none">
-          <path
-            d="M50 5 L90 28 L90 72 L50 95 L10 72 L10 28 Z"
-            fill="#339933"
-            opacity="0.15"
-          />
+          <path d="M50 5 L90 28 L90 72 L50 95 L10 72 L10 28 Z" fill="#339933" opacity="0.15" />
           <text x="50" y="62" textAnchor="middle" fill="#339933" fontSize="22" fontWeight="bold">
             Node
           </text>
@@ -82,12 +67,7 @@ const TechLogoIcon: React.FC<{ icon: string; color: string }> = ({
             d="M50 10 C50 10 28 35 28 55 C28 73 38 87 50 90 C62 87 72 73 72 55 C72 35 50 10 50 10Z"
             fill="#47A248"
           />
-          <path
-            d="M50 90 L50 25"
-            stroke="#B8C5B8"
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
+          <path d="M50 90 L50 25" stroke="#B8C5B8" strokeWidth="4" strokeLinecap="round" />
         </svg>
       );
     case 'mysql':
@@ -96,7 +76,13 @@ const TechLogoIcon: React.FC<{ icon: string; color: string }> = ({
           <path d="M15 30 Q50 20 85 30 Q50 40 15 30Z" fill="#4479A1" />
           <path d="M15 30 L15 70 Q50 80 85 70 L85 30 Q50 40 15 30Z" fill="#4479A1" opacity="0.7" />
           <path d="M15 50 Q50 60 85 50" stroke="#6EA8D0" strokeWidth="3" fill="none" />
-          <path d="M72 15 C80 25 88 10 92 5" stroke="#F29111" strokeWidth="4" fill="none" strokeLinecap="round" />
+          <path
+            d="M72 15 C80 25 88 10 92 5"
+            stroke="#F29111"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+          />
         </svg>
       );
     case 'html5':
@@ -114,7 +100,10 @@ const TechLogoIcon: React.FC<{ icon: string; color: string }> = ({
           <polygon points="14,8 86,8 78,88 50,96 22,88" fill="#1572B6" />
           <polygon points="50,86 72,80 78,16 50,16" fill="#33A9DC" />
           <polygon points="34,42 33,32 50,32 50,22 22,22 25,52 50,52 50,42" fill="white" />
-          <polygon points="50,62 50,72 64,68 65,58 50,58 50,52 68,52 70,32 50,32 50,42 59,42 58,52 50,52" fill="#EBEBEB" />
+          <polygon
+            points="50,62 50,72 64,68 65,58 50,58 50,52 68,52 70,32 50,32 50,42 59,42 58,52 50,52"
+            fill="#EBEBEB"
+          />
         </svg>
       );
     case 'tailwind':
@@ -169,8 +158,15 @@ const TechLogoIcon: React.FC<{ icon: string; color: string }> = ({
     case 'vscode':
       return (
         <svg viewBox="0 0 100 100" className="w-10 h-10">
-          <path d="M72 5 L28 42 L8 28 L5 32 L23 50 L5 68 L8 72 L28 58 L72 95 L95 82 L95 18Z" fill="#007ACC" />
-          <path d="M72 5 L28 42 L8 28 L5 32 L23 50 L5 68 L8 72 L28 58 L72 95 L95 82 L95 18Z" fill="url(#vscodeGrad)" opacity="0.4" />
+          <path
+            d="M72 5 L28 42 L8 28 L5 32 L23 50 L5 68 L8 72 L28 58 L72 95 L95 82 L95 18Z"
+            fill="#007ACC"
+          />
+          <path
+            d="M72 5 L28 42 L8 28 L5 32 L23 50 L5 68 L8 72 L28 58 L72 95 L95 82 L95 18Z"
+            fill="url(#vscodeGrad)"
+            opacity="0.4"
+          />
           <defs>
             <linearGradient id="vscodeGrad" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#1F9CF0" />

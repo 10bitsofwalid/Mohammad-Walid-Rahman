@@ -19,6 +19,7 @@
     "lucide-react": "^0.359.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-github-calendar": "^5.0.8",
     "zod": "^3.22.4",
     "zustand": "^4.5.2"
   },

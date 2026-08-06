@@ -1,7 +1,17 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
 import { ASSETS } from '../../assets';
-import { ArrowRight, Download, Github, Linkedin, Mail, Twitter, ChevronDown, Facebook, Instagram } from 'lucide-react';
+import {
+  ArrowRight,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  ChevronDown,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   const { availabilityStatus, availabilitySubtext, bio, socials } = PORTFOLIO_DATA;
@@ -112,15 +122,6 @@ export const HeroSection: React.FC = () => {
                 className="w-9 h-9 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] hover:border-indigo-300 hover:scale-110 transition-all duration-200"
               >
                 <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href={socials.discord}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Discord"
-                className="w-9 h-9 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] hover:border-indigo-300 hover:scale-110 transition-all duration-200"
-              >
-                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>

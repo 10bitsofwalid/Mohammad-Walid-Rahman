@@ -23,9 +23,7 @@ export const AboutSection: React.FC = () => {
             />
             {/* Experience Badge Overlay */}
             <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
-              <div className="text-2xl font-extrabold text-[#0F172A] dark:text-white">
-                2+
-              </div>
+              <div className="text-2xl font-extrabold text-[#0F172A] dark:text-white">2+</div>
               <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">
                 Years Experience
               </div>
