@@ -293,7 +293,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onCloseAdminView
         setBlogs(defaultBlogs);
       }
 
-      if (msgRes.status === 'fulfilled' && Array.isArray(msgRes.value) && msgRes.value.length > 0) {
+      if (msgRes.status === 'fulfilled' && Array.isArray(msgRes.value)) {
         setMessages(msgRes.value);
       } else {
         setMessages(defaultMessages);

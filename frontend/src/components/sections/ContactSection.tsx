@@ -1,20 +1,46 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
+import { contactService } from '../../services/contactService';
 
 export const ContactSection: React.FC = () => {
   const { contact } = PORTFOLIO_DATA;
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError('Please fill out all required fields.');
+      return;
+    }
+
+    if (formData.message.trim().length < 5) {
+      setError('Message must be at least 5 characters long.');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      await contactService.sendMessage({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+      });
       setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
       setTimeout(() => {
-        setFormData({ name: '', email: '', message: '' });
         setSubmitted(false);
-      }, 4000);
+      }, 6000);
+    } catch (err: any) {
+      console.error('Error sending message:', err);
+      setError(err?.message || 'Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -89,6 +115,11 @@ export const ContactSection: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
+                {error && (
+                  <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 dark:text-red-400 text-xs font-medium">
+                    {error}
+                  </div>
+                )}
                 {/* Name & Email in a row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
@@ -123,10 +154,15 @@ export const ContactSection: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="dark-pill-btn w-full justify-center py-3.5 text-sm font-bold"
+                  disabled={loading}
+                  className="dark-pill-btn w-full justify-center py-3.5 text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span>Send Message</span>
-                  <Send className="w-4 h-4" aria-hidden="true" />
+                  <span>{loading ? 'Sending Message...' : 'Send Message'}</span>
+                  {loading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+                  ) : (
+                    <Send className="w-4 h-4" aria-hidden="true" />
+                  )}
                 </button>
               </form>
             )}
