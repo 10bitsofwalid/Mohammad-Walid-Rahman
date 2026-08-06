@@ -1,4 +1,5 @@
 import React from 'react';
+import { PlusIcon } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -6,10 +7,11 @@ export interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   padding?: 'none' | 'sm' | 'md' | 'lg';
   specular?: boolean;
   interactive?: boolean;
+  showCorners?: boolean;
 }
 
 export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
-  ({ children, className, padding = 'md', specular = true, interactive = true, ...props }, ref) => {
+  ({ children, className, padding = 'md', specular = true, interactive = true, showCorners = false, ...props }, ref) => {
     const paddings = {
       none: 'p-0',
       sm: 'p-4',
@@ -21,7 +23,7 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
       <div
         ref={ref}
         className={cn(
-          'glass-card rounded-2xl',
+          'relative glass-card rounded-2xl',
           paddings[padding],
           specular && 'specular-border',
           interactive &&
@@ -30,6 +32,14 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
         )}
         {...props}
       >
+        {showCorners && (
+          <>
+            <PlusIcon className="absolute -top-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+            <PlusIcon className="absolute -top-3 -right-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+            <PlusIcon className="absolute -bottom-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+            <PlusIcon className="absolute -right-3 -bottom-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+          </>
+        )}
         {children}
       </div>
     );

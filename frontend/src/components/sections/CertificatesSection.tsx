@@ -10,6 +10,7 @@ import {
   Building2,
   Copy,
   Check,
+  PlusIcon,
 } from 'lucide-react';
 import { CoverflowCarousel, CoverflowSlide } from '../ui/CoverflowCarousel';
 
@@ -123,7 +124,11 @@ export const CertificatesSection: React.FC = () => {
             if (!activeSlide) return null;
             const cert = activeSlide.cert;
             return (
-              <div className="mt-6 max-w-2xl mx-auto p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-xl backdrop-blur-md transition-all duration-300">
+              <div className="relative mt-6 max-w-2xl mx-auto p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-xl backdrop-blur-md transition-all duration-300">
+                <PlusIcon className="absolute -top-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+                <PlusIcon className="absolute -top-3 -right-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+                <PlusIcon className="absolute -bottom-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+                <PlusIcon className="absolute -right-3 -bottom-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
                 <div className="space-y-4">
                   {/* Issuer & Date */}
                   <div className="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400">

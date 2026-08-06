@@ -1,4 +1,5 @@
 import React from 'react';
+import { PlusIcon } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -6,18 +7,19 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'hover' | 'bordered' | 'gradient';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   interactive?: boolean;
+  showCorners?: boolean;
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   (
-    { children, className, variant = 'default', padding = 'md', interactive = false, ...props },
+    { children, className, variant = 'default', padding = 'md', interactive = false, showCorners = false, ...props },
     ref
   ) => {
     const baseStyles =
-      'rounded-2xl transition-all duration-300 bg-[var(--color-surface-base)] border border-[var(--color-border-subtle)]';
+      'relative rounded-2xl transition-all duration-300 bg-[var(--color-surface-base)] border border-[var(--color-border-subtle)]';
 
     const variants = {
-      default: 'shadow-sm',
+      default: 'shadow-xs',
       hover:
         'hover:border-[var(--color-border-strong)] hover:shadow-md hover:shadow-[var(--color-accent-glow)]',
       bordered: 'border-[var(--color-border-strong)] bg-transparent',
@@ -43,6 +45,14 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         )}
         {...props}
       >
+        {showCorners && (
+          <>
+            <PlusIcon className="absolute -top-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+            <PlusIcon className="absolute -top-3 -right-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+            <PlusIcon className="absolute -bottom-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+            <PlusIcon className="absolute -right-3 -bottom-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+          </>
+        )}
         {children}
       </div>
     );

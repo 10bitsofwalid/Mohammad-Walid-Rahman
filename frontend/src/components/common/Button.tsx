@@ -4,7 +4,7 @@ import { cn } from '../../utils/cn';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'glass' | 'outline' | 'ghost' | 'danger';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'icon';
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -29,26 +29,28 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-primary)] focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100';
+      'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500/70 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 active:scale-95 hover:scale-[1.02] cursor-pointer group shadow-sm shadow-black/5';
 
     const variants = {
       primary:
-        'bg-[var(--gradient-accent)] text-white shadow-md hover:shadow-lg hover:shadow-[var(--color-accent-glow)] hover:brightness-110 border border-transparent',
+        'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-black/5 hover:shadow-md hover:shadow-indigo-500/25 border border-transparent',
       secondary:
-        'bg-[var(--color-surface-base)] text-[var(--color-text-primary)] border border-[var(--color-border-subtle)] hover:bg-[var(--color-surface-hover)] hover:border-[var(--color-border-strong)]',
+        'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow-sm shadow-black/5 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60',
       glass:
-        'glass-pill text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)] hover:shadow-md',
+        'bg-white/10 dark:bg-slate-900/60 text-slate-900 dark:text-slate-100 border border-white/20 dark:border-slate-700/50 backdrop-blur-md hover:bg-white/20 dark:hover:bg-slate-800/80 hover:shadow-md',
       outline:
-        'bg-transparent text-[var(--color-text-primary)] border border-[var(--color-border-strong)] hover:bg-[var(--color-surface-hover)]',
+        'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm shadow-black/5 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white',
       ghost:
-        'bg-transparent text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]',
-      danger: 'bg-rose-600 text-white hover:bg-rose-700 shadow-md focus:ring-rose-500',
+        'bg-transparent text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70',
+      danger:
+        'bg-rose-600 text-white shadow-sm shadow-black/5 hover:bg-rose-700 hover:shadow-md hover:shadow-rose-500/25 focus-visible:outline-rose-500',
     };
 
     const sizes = {
-      sm: 'px-3 py-1.5 text-xs gap-1.5',
-      md: 'px-5 py-2.5 text-sm gap-2',
-      lg: 'px-7 py-3.5 text-base gap-2.5 font-semibold',
+      sm: 'h-8 rounded-lg px-3 text-xs gap-1.5',
+      md: 'h-9 rounded-lg px-4 py-2 text-sm gap-2',
+      lg: 'h-10 rounded-lg px-6 text-sm font-semibold gap-2.5',
+      icon: 'h-9 w-9 p-0 rounded-lg',
     };
 
     return (
@@ -67,7 +69,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {leftIcon}
           </span>
         ) : null}
-        <span>{children}</span>
+        {children ? <span>{children}</span> : null}
         {!isLoading && rightIcon ? (
           <span className="shrink-0" aria-hidden="true">
             {rightIcon}

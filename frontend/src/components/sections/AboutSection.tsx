@@ -1,7 +1,7 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
 import { ASSETS } from '../../assets';
-import { User } from 'lucide-react';
+import { User, PlusIcon } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const { about, authorName } = PORTFOLIO_DATA;
@@ -15,17 +15,24 @@ export const AboutSection: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Column: Image Card with Experience Badge */}
         <div className="lg:col-span-5 relative flex justify-center">
-          <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 group">
-            <img
-              src={ASSETS.profilePic}
-              alt={authorName}
-              className="w-full aspect-[4/5] sm:h-[460px] object-cover object-top group-hover:scale-105 transition-transform duration-500"
-            />
-            {/* Experience Badge Overlay */}
-            <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
-              <div className="text-2xl font-extrabold text-[#0F172A] dark:text-white">2+</div>
-              <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">
-                Years Experience
+          <div className="relative w-full max-w-md rounded-3xl shadow-lg border border-gray-100 dark:border-gray-800 group">
+            <PlusIcon className="absolute -top-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+            <PlusIcon className="absolute -top-3 -right-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+            <PlusIcon className="absolute -bottom-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+            <PlusIcon className="absolute -right-3 -bottom-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+
+            <div className="w-full rounded-3xl overflow-hidden relative">
+              <img
+                src={ASSETS.profilePic}
+                alt={authorName}
+                className="w-full aspect-[4/5] sm:h-[460px] object-cover object-top group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Experience Badge Overlay */}
+              <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
+                <div className="text-2xl font-extrabold text-[#0F172A] dark:text-white">2+</div>
+                <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                  Years Experience
+                </div>
               </div>
             </div>
           </div>
@@ -63,8 +70,13 @@ export const AboutSection: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-gray-800/80 border border-gray-100 dark:border-gray-700/80 rounded-2xl p-4 text-left shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                  className="relative bg-white dark:bg-gray-800/80 border border-gray-100 dark:border-gray-700/80 rounded-2xl p-4 text-left shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
                 >
+                  <PlusIcon className="absolute -top-2.5 -left-2.5 h-4 w-4 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+                  <PlusIcon className="absolute -top-2.5 -right-2.5 h-4 w-4 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+                  <PlusIcon className="absolute -bottom-2.5 -left-2.5 h-4 w-4 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+                  <PlusIcon className="absolute -right-2.5 -bottom-2.5 h-4 w-4 text-gray-400 dark:text-gray-500 z-10 pointer-events-none" />
+
                   <div
                     className={`font-extrabold text-[#0F172A] dark:text-white mb-0.5 ${isInfinity ? 'text-3xl text-[#4F46E5]' : 'text-2xl sm:text-3xl'}`}
                   >

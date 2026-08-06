@@ -1,6 +1,8 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
 import { ASSETS } from '../../assets';
+import { triggerResumeDownload } from '../../hooks';
+
 import {
   ArrowRight,
   Download,
@@ -22,9 +24,9 @@ export const HeroSection: React.FC = () => {
       className="relative min-h-[92vh] flex flex-col justify-between pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
     >
       {/* Background Soft Pastel Ambient Blobs */}
-      <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-indigo-200/25 dark:bg-indigo-900/15 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute top-1/3 left-0 w-80 h-80 bg-blue-100/30 dark:bg-blue-900/10 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-20 right-1/3 w-64 h-64 bg-purple-100/20 dark:bg-purple-900/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-blue-100/30 dark:bg-indigo-900/15 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-0 w-80 h-80 bg-sky-100/30 dark:bg-blue-900/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-20 right-1/3 w-64 h-64 bg-indigo-100/20 dark:bg-indigo-900/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
         {/* Left Column: Content */}
@@ -59,17 +61,15 @@ export const HeroSection: React.FC = () => {
               <ArrowRight className="w-4 h-4" />
             </a>
 
-            <a
-              href={ASSETS.resumePdf}
-              download="Mohammad_Walid_Rahman_CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="light-pill-btn hover:no-underline"
+            <button
+              onClick={triggerResumeDownload}
+              className="light-pill-btn hover:no-underline cursor-pointer"
               aria-label="Download Resume PDF"
             >
               <span>Download Resume</span>
               <Download className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-            </a>
+            </button>
+
           </div>
 
           {/* Social Row */}

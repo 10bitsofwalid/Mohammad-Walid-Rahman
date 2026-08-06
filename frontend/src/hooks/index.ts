@@ -10,3 +10,5 @@ export * from './usePortfolioData';
 export * from './useLocalStorage';
 export * from './useReducedMotion';
 export * from './useFocusTrap';
+export * from './useResumeDownload';
+

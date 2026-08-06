@@ -27,10 +27,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="relative min-h-screen flex flex-col bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] transition-colors duration-300 font-sans">
       {/* Ambient Animated WebGL Canvas Background */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30 dark:opacity-50">
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-20 dark:opacity-45">
         <AnimatedGradient
-          config={{ preset: "Aurora", speed: 15 }}
-          noise={{ opacity: 0.04 }}
+          config={{ preset: "Oceanic", speed: 12 }}
+          noise={{ opacity: 0.03 }}
         />
       </div>
 

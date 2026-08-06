@@ -24,7 +24,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
         role="group"
         aria-label="Theme options"
         className={cn(
-          'inline-flex items-center p-1 rounded-full border border-[var(--color-border-subtle)] bg-[var(--color-bg-secondary)]',
+          'inline-flex items-center p-1 rounded-full border border-slate-200/80 dark:border-slate-800/80 bg-slate-100/90 dark:bg-slate-900/90 backdrop-blur-md w-full justify-between',
           className
         )}
       >
@@ -36,10 +36,10 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
             aria-pressed={theme === m.key}
             aria-label={`Switch to ${m.label} theme`}
             className={cn(
-              'flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-primary)]',
+              'flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500',
               theme === m.key
-                ? 'bg-[var(--color-surface-base)] text-[var(--color-text-primary)] shadow-sm'
-                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
+                ? 'bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xs'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             )}
             title={`Switch to ${m.label} theme`}
           >
@@ -56,16 +56,16 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
       type="button"
       onClick={toggleTheme}
       className={cn(
-        'relative flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200 border border-[var(--color-border-subtle)] bg-[var(--color-surface-base)] hover:bg-[var(--color-surface-hover)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-primary)]',
+        'relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 border border-slate-200/80 dark:border-slate-800/80 bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-xl text-slate-700 dark:text-amber-300 hover:bg-white dark:hover:bg-slate-800 shadow-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/50 hover:scale-105 active:scale-95',
         className
       )}
       aria-label={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
-      title={`Current: ${resolvedTheme} mode. Click to toggle.`}
+      title={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
     >
       {resolvedTheme === 'dark' ? (
-        <Sun className="w-4 h-4 text-amber-400 transition-transform duration-300 rotate-0 hover:rotate-45" />
+        <Sun className="w-4.5 h-4.5 text-amber-400 transition-transform duration-300 rotate-0 hover:rotate-45" />
       ) : (
-        <Moon className="w-4 h-4 text-indigo-500 transition-transform duration-300 rotate-0 hover:-rotate-12" />
+        <Moon className="w-4.5 h-4.5 text-indigo-600 transition-transform duration-300 rotate-0 hover:-rotate-12" />
       )}
     </button>
   );

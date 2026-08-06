@@ -2,14 +2,14 @@
 
 :root,
 [data-theme='light'] {
-  /* Light Mode Palette (Default matching mockup) */
-  --hsl-bg-primary: 240 20% 99%; /* #FAFAFD */
-  --hsl-bg-secondary: 220 14% 96%; /* #F1F5F9 */
-  --hsl-bg-tertiary: 220 13% 91%; /* #E2E8F0 */
+  /* Light Mode Palette (Clean Crisp Whiteish Design) */
+  --hsl-bg-primary: 210 40% 98%; /* #F8FAFC - Pure clean whiteish slate */
+  --hsl-bg-secondary: 210 40% 96%; /* #F1F5F9 */
+  --hsl-bg-tertiary: 214 32% 91%; /* #E2E8F0 */
 
   --hsl-surface-base: 0 0% 100%; /* #FFFFFF */
-  --hsl-surface-hover: 220 14% 97%;
-  --hsl-surface-active: 220 14% 93%;
+  --hsl-surface-hover: 210 40% 97%;
+  --hsl-surface-active: 210 40% 93%;
   --hsl-surface-glass: 0 0% 100%;
 
   --hsl-text-primary: 222 47% 11%; /* #0F172A */
@@ -17,18 +17,18 @@
   --hsl-text-muted: 215 22% 36%; /* #475569 - 4.8:1 contrast */
   --hsl-text-disabled: 215 16% 60%;
 
-  --hsl-accent-primary: 239 84% 67%; /* #6366F1 / #4F46E5 */
-  --hsl-accent-hover: 239 84% 60%;
+  --hsl-accent-primary: 221 83% 53%; /* #2563EB - Royal Blue */
+  --hsl-accent-hover: 224 76% 48%; /* #1D4ED8 */
   --hsl-accent-gradient-start: 217 91% 60%; /* #3B82F6 */
-  --hsl-accent-gradient-end: 258 90% 66%; /* #8B5CF6 */
+  --hsl-accent-gradient-end: 199 89% 48%; /* #0EA5E9 - Sky Blue */
 
-  --hsl-badge-bg: 226 100% 97%; /* #EEF2FF */
-  --hsl-badge-border: 226 100% 94%; /* #E0E7FF */
-  --hsl-badge-text: 239 84% 59%; /* #4F46E5 */
+  --hsl-badge-bg: 214 100% 97%; /* #EFF6FF */
+  --hsl-badge-border: 214 95% 93%; /* #DBEAFE */
+  --hsl-badge-text: 221 83% 53%; /* #2563EB */
 
-  --hsl-border-subtle: 220 13% 91%; /* #E2E8F0 */
-  --hsl-border-strong: 220 13% 82%; /* #CBD5E1 */
-  --hsl-border-focus: 239 84% 67%;
+  --hsl-border-subtle: 214 32% 91%; /* #E2E8F0 */
+  --hsl-border-strong: 214 32% 82%; /* #CBD5E1 */
+  --hsl-border-focus: 221 83% 53%;
 
   --hsl-status-success: 142 71% 45%;
   --hsl-status-warning: 38 92% 50%;
@@ -44,12 +44,12 @@
   --gradient-surface: linear-gradient(
     180deg,
     hsla(0, 0%, 100%, 0.95) 0%,
-    hsla(240, 20%, 98%, 0.95) 100%
+    hsla(210, 40%, 98%, 0.95) 100%
   );
   --gradient-glass: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.9) 0%,
-    rgba(245, 247, 250, 0.8) 100%
+    rgba(248, 250, 252, 0.8) 100%
   );
 
   /* Light Mode Shadows */
@@ -57,7 +57,7 @@
   --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
   --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.07);
   --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.1);
-  --shadow-glow: 0 8px 24px rgba(99, 102, 241, 0.18);
+  --shadow-glow: 0 8px 24px rgba(37, 99, 235, 0.15);
 }
 
 [data-theme='dark'] {

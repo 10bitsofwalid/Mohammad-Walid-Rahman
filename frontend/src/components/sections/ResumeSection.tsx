@@ -1,9 +1,13 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../constants';
-import { FileText, Download, ExternalLink, Sparkles } from 'lucide-react';
+import { FileText, Download, ExternalLink, Sparkles, CheckCircle2, Loader2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ProgressBar } from '../ui/progress-bar';
+import { useResumeDownload } from '../../hooks';
 
 export const ResumeSection: React.FC = () => {
   const { resume } = PORTFOLIO_DATA;
+  const { isDownloading, progress, isComplete, startDownload } = useResumeDownload();
 
   return (
     <section
@@ -85,16 +89,31 @@ export const ResumeSection: React.FC = () => {
           </div>
 
           {/* Right Side: Action Buttons */}
-          <div className="flex flex-col sm:flex-row lg:flex-col gap-3.5 shrink-0 justify-center">
-            <a
-              href={resume.fileUrl}
-              download={resume.fileName}
-              className="dark-pill-btn text-sm px-6 py-3 hover:no-underline inline-flex items-center justify-center gap-2.5 shadow-md hover:shadow-indigo-500/2 shadow-indigo-500/10 group/btn"
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-3.5 shrink-0 justify-center min-w-[220px]">
+            <button
+              onClick={startDownload}
+              disabled={isDownloading}
+              className={`dark-pill-btn text-sm px-6 py-3 hover:no-underline inline-flex items-center justify-center gap-2.5 shadow-md cursor-pointer transition-all ${
+                isDownloading
+                  ? 'opacity-90 cursor-not-allowed bg-indigo-700 dark:bg-indigo-600'
+                  : 'hover:shadow-indigo-500/20 shadow-indigo-500/10 group/btn'
+              }`}
               aria-label="Download Resume PDF"
             >
-              <Download className="w-4 h-4 text-indigo-300 group-hover/btn:translate-y-0.5 transition-transform" />
-              <span className="font-bold">Download Resume</span>
-            </a>
+              {isDownloading ? (
+                <>
+                  <Loader2 className="w-4 h-4 text-indigo-200 animate-spin" />
+                  <span className="font-bold">
+                    {isComplete ? 'Downloaded!' : 'Downloading...'}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <Download className="w-4 h-4 text-indigo-300 group-hover/btn:translate-y-0.5 transition-transform" />
+                  <span className="font-bold">Download Resume</span>
+                </>
+              )}
+            </button>
 
             <a
               href={resume.fileUrl}
@@ -108,6 +127,38 @@ export const ResumeSection: React.FC = () => {
             </a>
           </div>
         </div>
+
+        {/* Dynamic Animated ProgressBar Component for Resume Download */}
+        <AnimatePresence>
+          {isDownloading && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+              animate={{ opacity: 1, height: 'auto', marginTop: 24 }}
+              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+              className="w-full pt-5 border-t border-gray-200/60 dark:border-gray-700/60 overflow-hidden"
+            >
+              <div className="bg-stone-50/90 dark:bg-[#151513] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-stone-800/80 shadow-xs">
+                <ProgressBar
+                  value={progress}
+                  label={resume.fileName}
+                  pendingLabel="Sizing"
+                  completeLabel="Upload complete"
+                />
+                {isComplete && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 justify-end"
+                  >
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Resume downloaded successfully!</span>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Highlights Summary Grid */}

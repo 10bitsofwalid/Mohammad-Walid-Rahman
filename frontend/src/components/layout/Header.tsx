@@ -4,6 +4,7 @@ import { NAV_ROUTES } from '../../router/routes';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useUIStore } from '../../store/useUIStore';
 import { Container } from './Container';
+import { ThemeToggle } from './ThemeToggle';
 import { cn } from '../../utils/cn';
 
 export const Header: React.FC = () => {
@@ -84,8 +85,9 @@ export const Header: React.FC = () => {
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Toggle */}
-        <div className="flex-1 flex items-center justify-end">
+        {/* Right CTA Button, Theme Toggle & Mobile Toggle */}
+        <div className="flex-1 flex items-center justify-end gap-2.5 sm:gap-3">
+          <ThemeToggle />
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, 'contact')}

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, PlusIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -321,7 +321,7 @@ export function CoverflowCarousel({
                   aria-roledescription="slide"
                   aria-label={`${index + 1} of ${count}`}
                   className={cn(
-                    "absolute left-1/2 top-0 overflow-hidden rounded-2xl bg-muted shadow-xl will-change-transform cursor-pointer transition-shadow hover:shadow-2xl",
+                    "absolute left-1/2 top-0 rounded-2xl bg-muted shadow-xl will-change-transform cursor-pointer transition-shadow hover:shadow-2xl",
                     cardClassName
                   )}
                   style={{
@@ -329,16 +329,22 @@ export function CoverflowCarousel({
                     height: cardHeightStyle,
                   }}
                 >
-                  {renderCard ? (
-                    renderCard(slide, index, isActive)
-                  ) : (
-                    <img
-                      src={slide.src}
-                      alt={slide.alt}
-                      draggable={false}
-                      className="h-full w-full select-none object-cover"
-                    />
-                  )}
+                  <PlusIcon className="absolute -top-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+                  <PlusIcon className="absolute -top-3 -right-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+                  <PlusIcon className="absolute -bottom-3 -left-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+                  <PlusIcon className="absolute -right-3 -bottom-3 h-5 w-5 text-gray-400 dark:text-gray-500 z-20 pointer-events-none" />
+                  <div className="w-full h-full rounded-2xl overflow-hidden">
+                    {renderCard ? (
+                      renderCard(slide, index, isActive)
+                    ) : (
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        draggable={false}
+                        className="h-full w-full select-none object-cover"
+                      />
+                    )}
+                  </div>
                 </div>
               );
             })}
