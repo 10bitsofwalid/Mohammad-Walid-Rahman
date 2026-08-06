@@ -586,20 +586,42 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onCloseAdminView
 
   // Contact Messages Handlers
   const handleDeleteMessage = async (id: string) => {
+    // If it's a local/mock message ID, remove it directly
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      setMessages((prev) => prev.filter((m) => m._id !== id));
+      showToast('Message removed.');
+      return;
+    }
+
     try {
       await contactService.deleteMessage(id);
-      setMessages(messages.filter((m) => m._id !== id));
+      setMessages((prev) => prev.filter((m) => m._id !== id));
       showToast('Message deleted.');
     } catch (err: any) {
-      showToast(`Error deleting message: ${err.message}`);
+      if (err?.status === 404 || err?.message?.toLowerCase().includes('not found')) {
+        setMessages((prev) => prev.filter((m) => m._id !== id));
+        showToast('Message removed.');
+      } else {
+        showToast(`Error deleting message: ${err.message}`);
+      }
     }
   };
 
   const handleToggleReadMessage = async (msg: ContactMessageItem) => {
+    if (!msg._id.match(/^[0-9a-fA-F]{24}$/)) {
+      setMessages((prev) =>
+        prev.map((m) => (m._id === msg._id ? { ...m, read: !m.read } : m))
+      );
+      return;
+    }
+
     try {
       const updated = await contactService.updateStatus(msg._id, { read: !msg.read });
-      setMessages(messages.map((m) => (m._id === msg._id ? updated : m)));
+      setMessages((prev) => prev.map((m) => (m._id === msg._id ? updated : m)));
     } catch (err: any) {
+      setMessages((prev) =>
+        prev.map((m) => (m._id === msg._id ? { ...m, read: !m.read } : m))
+      );
       showToast(`Error updating message: ${err.message}`);
     }
   };
