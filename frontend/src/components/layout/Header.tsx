@@ -38,24 +38,26 @@ export const Header: React.FC = () => {
           : 'bg-transparent border-transparent py-4 sm:py-5'
       )}
     >
-      <Container className="flex items-center justify-between">
+      <Container size="full" className="flex items-center justify-between px-4 sm:px-8 lg:px-12">
         {/* Brand Logo */}
-        <a
-          href="#hero"
-          onClick={(e) => handleNavClick(e, 'hero')}
-          className="flex items-center gap-2.5 group focus:outline-none"
-          aria-label="Mohammad Walid Rahman Home Page"
-        >
-          <div className="w-8 h-8 rounded-lg bg-[#0F172A] dark:bg-white text-white dark:text-[#0F172A] flex items-center justify-center font-bold text-xs shadow-xs group-hover:scale-105 transition-transform duration-200">
-            WR
-          </div>
-          <span className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-white tracking-tight">
-            Walid Rahman
-          </span>
-        </a>
+        <div className="flex-1 flex items-center justify-start">
+          <a
+            href="#hero"
+            onClick={(e) => handleNavClick(e, 'hero')}
+            className="flex items-center gap-2.5 group focus:outline-none shrink-0"
+            aria-label="Mohammad Walid Rahman Home Page"
+          >
+            <div className="w-8 h-8 rounded-lg bg-[#0F172A] dark:bg-white text-white dark:text-[#0F172A] flex items-center justify-center font-bold text-xs shadow-xs group-hover:scale-105 transition-transform duration-200">
+              WR
+            </div>
+            <span className="font-semibold text-sm sm:text-base text-[#0F172A] dark:text-white tracking-tight whitespace-nowrap">
+              Walid Rahman
+            </span>
+          </a>
+        </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6" aria-label="Main Navigation">
+        <nav className="hidden lg:flex items-center justify-center gap-3 xl:gap-5 px-4" aria-label="Main Navigation">
           {NAV_ROUTES.map((route) => {
             const isActive = activeSection === route.id;
             return (
@@ -65,9 +67,9 @@ export const Header: React.FC = () => {
                 onClick={(e) => handleNavClick(e, route.id)}
                 aria-current={isActive ? 'page' : undefined}
                 className={cn(
-                  'text-sm font-medium transition-colors duration-150',
+                  'text-xs xl:text-sm font-medium transition-colors duration-150 whitespace-nowrap',
                   isActive
-                    ? 'text-[#4F46E5] font-semibold'
+                    ? 'text-[#4F46E5] dark:text-indigo-400 font-semibold'
                     : 'text-[#475569] dark:text-gray-300 hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
@@ -77,34 +79,34 @@ export const Header: React.FC = () => {
           })}
         </nav>
 
-        {/* Right CTA Button */}
-        <div className="hidden lg:flex items-center">
+        {/* Right CTA Button & Mobile Toggle */}
+        <div className="flex-1 flex items-center justify-end">
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, 'contact')}
-            className="dark-pill-btn text-sm px-5 py-2.5 hover:no-underline"
+            className="hidden lg:inline-flex dark-pill-btn text-xs xl:text-sm px-4 xl:px-5 py-2 xl:py-2.5 hover:no-underline shrink-0"
             aria-label="Contact Mohammad Walid Rahman"
           >
             <span>Let's Talk</span>
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </a>
-        </div>
 
-        {/* Mobile Toggle Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-lg border border-[var(--color-border-subtle)] bg-white dark:bg-gray-800 text-[#0F172A] dark:text-white"
-          aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-navigation"
-        >
-          {mobileMenuOpen ? (
-            <X className="w-5 h-5" aria-hidden="true" />
-          ) : (
-            <Menu className="w-5 h-5" aria-hidden="true" />
-          )}
-        </button>
+          {/* Mobile Toggle Button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg border border-[var(--color-border-subtle)] bg-white dark:bg-gray-800 text-[#0F172A] dark:text-white"
+            aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5" aria-hidden="true" />
+            ) : (
+              <Menu className="w-5 h-5" aria-hidden="true" />
+            )}
+          </button>
+        </div>
       </Container>
 
       {/* Mobile Drawer Menu */}

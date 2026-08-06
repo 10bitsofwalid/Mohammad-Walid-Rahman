@@ -19,7 +19,7 @@ export const AboutSection: React.FC = () => {
             <img
               src={ASSETS.profilePic}
               alt={authorName}
-              className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              className="w-full aspect-[4/5] sm:h-[460px] object-cover object-top group-hover:scale-105 transition-transform duration-500"
             />
             {/* Experience Badge Overlay */}
             <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
