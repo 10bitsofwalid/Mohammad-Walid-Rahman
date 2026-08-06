@@ -33,10 +33,8 @@ export const Header: React.FC = () => {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b',
-        isScrolled
-          ? 'bg-white/85 dark:bg-[#0B1120]/85 backdrop-blur-xl border-slate-200/80 dark:border-slate-800/80 py-2.5 shadow-sm'
-          : 'bg-transparent border-transparent py-4 sm:py-5'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent border-transparent',
+        isScrolled ? 'py-2.5 sm:py-3' : 'py-4 sm:py-5'
       )}
     >
       <Container size="full" className="flex items-center justify-between px-4 sm:px-8 lg:px-12">
