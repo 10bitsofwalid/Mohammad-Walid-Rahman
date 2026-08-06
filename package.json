@@ -14,7 +14,7 @@
     "seed:backend": "npm --prefix backend run seed",
     "build:frontend": "npm --prefix frontend run build",
     "build:backend": "npm --prefix backend run build",
-    "build": "npm run build:frontend && npm run build:backend",
+    "build": "npm run build:backend && npm run build:frontend",
     "typecheck": "npm --prefix frontend run typecheck && npm --prefix backend run typecheck",
     "lint": "npm --prefix frontend run lint && npm --prefix backend run lint",
     "format": "npm --prefix frontend run format && npm --prefix backend run format",
