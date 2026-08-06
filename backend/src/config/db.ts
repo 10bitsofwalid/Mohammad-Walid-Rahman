@@ -4,6 +4,9 @@ import { env } from './env.js';
 import { logger } from '../utils/logger.js';
 
 export const connectDB = async (): Promise<void> => {
+  if (mongoose.connection.readyState >= 1) {
+    return;
+  }
   try {
     try {
       dns.setServers(['8.8.8.8', '1.1.1.1']);
@@ -14,7 +17,10 @@ export const connectDB = async (): Promise<void> => {
     logger.info(`MongoDB Connected: ${conn.connection.host} / ${conn.connection.name}`);
   } catch (error) {
     logger.error('Failed to connect to MongoDB', error);
-    process.exit(1);
+    if (!process.env.VERCEL) {
+      process.exit(1);
+    }
+    throw error;
   }
 };
 
