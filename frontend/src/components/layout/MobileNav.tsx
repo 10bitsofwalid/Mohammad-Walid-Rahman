@@ -7,7 +7,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { cn } from '../../utils/cn';
 
 export const MobileNav: React.FC = () => {
-  const { isMobileMenuOpen, closeMobileMenu, activeSection } = useUIStore();
+  const { isMobileMenuOpen, closeMobileMenu, activeSection, setActiveSection } = useUIStore();
 
   const containerRef = useFocusTrap<HTMLDivElement>({
     active: isMobileMenuOpen,
@@ -18,6 +18,7 @@ export const MobileNav: React.FC = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
+    setActiveSection(sectionId);
     closeMobileMenu();
 
     const targetElement = document.getElementById(sectionId);

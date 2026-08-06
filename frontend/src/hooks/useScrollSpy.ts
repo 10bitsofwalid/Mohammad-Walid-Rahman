@@ -1,64 +1,81 @@
 import { useState, useEffect } from 'react';
 
 /**
- * High-performance Section Observer hook using IntersectionObserver.
+ * High-performance, accurate Section Observer hook for navigation header scroll spy.
  */
-export function useScrollSpy(sectionIds: string[], offset: number = 100): string {
+export function useScrollSpy(sectionIds: string[], offset: number = 90): string {
   const [activeId, setActiveId] = useState<string>(sectionIds[0] || '');
 
   useEffect(() => {
     if (typeof window === 'undefined' || sectionIds.length === 0) return;
 
-    const hasIntersectionObserver = typeof IntersectionObserver !== 'undefined';
+    const computeActiveSection = () => {
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
 
-    if (hasIntersectionObserver) {
-      const observerOptions: IntersectionObserverInit = {
-        root: null,
-        rootMargin: `-${offset}px 0px -40% 0px`,
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      };
+      // 1. Top of page edge case
+      if (scrollY < 100) {
+        setActiveId(sectionIds[0]);
+        return;
+      }
 
-      const handleIntersection: IntersectionObserverCallback = (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+      // 2. Bottom of page edge case (reach contact/footer)
+      if (scrollY + viewportHeight >= scrollHeight - 50) {
+        setActiveId(sectionIds[sectionIds.length - 1]);
+        return;
+      }
+
+      // 3. Find section currently under the header reading line
+      let currentSection = '';
+      let maxOverlap = -1;
+
+      for (let i = 0; i < sectionIds.length; i++) {
+        const id = sectionIds[i];
+        const el = document.getElementById(id);
+        if (!el) continue;
+
+        const rect = el.getBoundingClientRect();
+        const topRelativeToHeader = rect.top - offset;
+        const bottomRelativeToHeader = rect.bottom - offset;
+
+        // If section top has reached or passed header offset, and bottom is still below header
+        if (topRelativeToHeader <= 120 && bottomRelativeToHeader > 40) {
+          const visibleTop = Math.max(rect.top, offset);
+          const visibleBottom = Math.min(rect.bottom, viewportHeight);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+          if (visibleHeight > maxOverlap) {
+            maxOverlap = visibleHeight;
+            currentSection = id;
           }
-        });
-      };
-
-      const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-      sectionIds.forEach((id) => {
-        const element = document.getElementById(id);
-        if (element) {
-          observer.observe(element);
         }
-      });
+      }
 
-      return () => observer.disconnect();
-    } else {
-      // Fallback for older environments
-      const handleScroll = () => {
-        const scrollPosition = window.scrollY + offset;
+      if (currentSection) {
+        setActiveId(currentSection);
+      }
+    };
 
-        for (let i = sectionIds.length - 1; i >= 0; i--) {
-          const section = document.getElementById(sectionIds[i]);
-          if (section) {
-            const top = section.offsetTop;
-            if (scrollPosition >= top) {
-              setActiveId(sectionIds[i]);
-              break;
-            }
-          }
-        }
-      };
+    let rafId: number | null = null;
+    const onScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(computeActiveSection);
+    };
 
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      handleScroll();
+    // Initial computation
+    computeActiveSection();
 
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, [sectionIds, offset]);
 
   return activeId;
 }
+

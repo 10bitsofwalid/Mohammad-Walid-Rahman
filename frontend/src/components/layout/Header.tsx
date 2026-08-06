@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { NAV_ROUTES } from '../../router/routes';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
@@ -8,12 +8,13 @@ import { cn } from '../../utils/cn';
 
 export const Header: React.FC = () => {
   const { isScrolled } = useScrollPosition(20);
-  const { activeSection } = useUIStore();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { activeSection, setActiveSection, isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useUIStore();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
-    setMobileMenuOpen(false);
+    setActiveSection(sectionId);
+    closeMobileMenu();
+
     const targetElement = document.getElementById(sectionId);
     if (targetElement) {
       const headerOffset = 80;
@@ -34,7 +35,7 @@ export const Header: React.FC = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b',
         isScrolled
-          ? 'bg-white/90 dark:bg-[var(--color-surface-glass)] backdrop-blur-md border-[var(--color-border-subtle)] py-3 shadow-xs'
+          ? 'bg-white/85 dark:bg-[#0B1120]/85 backdrop-blur-xl border-slate-200/80 dark:border-slate-800/80 py-2.5 shadow-sm'
           : 'bg-transparent border-transparent py-4 sm:py-5'
       )}
     >
@@ -56,8 +57,11 @@ export const Header: React.FC = () => {
           </a>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center justify-center gap-3 xl:gap-5 px-4" aria-label="Main Navigation">
+        {/* Desktop Navigation Glass Bar */}
+        <nav
+          className="hidden lg:flex items-center justify-center gap-1 xl:gap-1.5 p-1.5 rounded-full bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200/60 dark:border-slate-800/80 backdrop-blur-xl shadow-xs transition-all duration-300"
+          aria-label="Main Navigation"
+        >
           {NAV_ROUTES.map((route) => {
             const isActive = activeSection === route.id;
             return (
@@ -67,13 +71,16 @@ export const Header: React.FC = () => {
                 onClick={(e) => handleNavClick(e, route.id)}
                 aria-current={isActive ? 'page' : undefined}
                 className={cn(
-                  'text-xs xl:text-sm font-medium transition-colors duration-150 whitespace-nowrap',
+                  'relative px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium transition-all duration-200 whitespace-nowrap outline-none flex items-center justify-center',
                   isActive
-                    ? 'text-[#4F46E5] dark:text-indigo-400 font-semibold'
-                    : 'text-[#475569] dark:text-gray-300 hover:text-[#0F172A] dark:hover:text-white'
+                    ? 'bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white font-semibold shadow-xs border border-indigo-100/80 dark:border-indigo-500/30'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60'
                 )}
               >
-                {route.label}
+                <span>{route.label}</span>
+                {isActive && (
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-300 shadow-xs" />
+                )}
               </a>
             );
           })}
@@ -94,13 +101,13 @@ export const Header: React.FC = () => {
           {/* Mobile Toggle Button */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg border border-[var(--color-border-subtle)] bg-white dark:bg-gray-800 text-[#0F172A] dark:text-white"
-            aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-            aria-expanded={mobileMenuOpen}
+            onClick={toggleMobileMenu}
+            className="lg:hidden p-2 rounded-xl border border-[var(--color-border-subtle)] bg-white/80 dark:bg-slate-800/80 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+            aria-label={isMobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+            aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation"
           >
-            {mobileMenuOpen ? (
+            {isMobileMenuOpen ? (
               <X className="w-5 h-5" aria-hidden="true" />
             ) : (
               <Menu className="w-5 h-5" aria-hidden="true" />
@@ -108,36 +115,7 @@ export const Header: React.FC = () => {
           </button>
         </div>
       </Container>
-
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <nav
-          id="mobile-navigation"
-          className="lg:hidden bg-white dark:bg-[var(--color-surface-base)] border-b border-[var(--color-border-subtle)] px-6 py-4 space-y-3 shadow-lg"
-          aria-label="Mobile Navigation"
-        >
-          {NAV_ROUTES.map((route) => (
-            <a
-              key={route.id}
-              href={route.path}
-              onClick={(e) => handleNavClick(e, route.id)}
-              className="block text-sm font-medium text-[#475569] dark:text-gray-200 hover:text-[#4F46E5] py-1"
-            >
-              {route.label}
-            </a>
-          ))}
-          <div className="pt-2">
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, 'contact')}
-              className="dark-pill-btn text-xs w-full py-2.5 justify-center"
-            >
-              <span>Let's Talk</span>
-              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-            </a>
-          </div>
-        </nav>
-      )}
     </header>
   );
 };
+
