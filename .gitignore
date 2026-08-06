@@ -40,6 +40,6 @@ backend/.env.local
 # Antigravity IDE / Gemini internal
 .gemini
 
-docs
-design
-Assets
+/docs
+/design
+/Assets
