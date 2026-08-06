@@ -4,10 +4,6 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/api/v1/:path*",
-      "destination": "https://your-backend-api.onrender.com/api/v1/:path*"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
