@@ -7,6 +7,7 @@ import {
   ProjectsSection,
   ExperienceSection,
   GitHubSection,
+  CertificatesSection,
 } from './components/sections';
 import { SEO, Skeleton } from './components/common';
 import { useAuthStore } from './store/useAuthStore';
@@ -69,6 +70,7 @@ export const App: React.FC = () => {
       <ProjectsSection />
       <ExperienceSection />
       <GitHubSection />
+      <CertificatesSection />
 
       <Suspense fallback={<SectionFallback />}>
         <BeyondCodeSection />

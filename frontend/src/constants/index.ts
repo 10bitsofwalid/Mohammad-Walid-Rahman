@@ -180,6 +180,34 @@ export const PORTFOLIO_DATA = {
     ],
   },
 
+  certificates: {
+    badge: 'Certifications',
+    title: 'Licenses & Certifications',
+    subtitle: 'Verified professional certifications and completed learning paths.',
+    items: [
+      {
+        id: 'cert-1',
+        title: 'Mastering Design Patterns with Java',
+        issuer: 'CodeSignal',
+        issueDate: 'April 2026',
+        credentialId: 'cmmmz4gj4009xi904zm7fl5rx',
+        credentialUrl: 'https://codesignal.com/learn/certificates/cmmmz4gj4009xi904zm7fl5rx/course-paths/85',
+        image: ASSETS.certificate2,
+        tags: ['Java', 'Design Patterns', 'CS Fundamentals', 'Software Architecture'],
+      },
+      {
+        id: 'cert-2',
+        title: 'UML (Unified Modeling Language) Training Course',
+        issuer: 'Elevify / Ministry of Education',
+        issueDate: 'October 2023',
+        credentialId: 'BCDX-1234-ZYW9-7654',
+        credentialUrl: 'http://www.moe.gov.er/verify/cer#241-35-435',
+        image: ASSETS.certificate1,
+        tags: ['UML', 'Software Design', 'System Architecture', 'Modeling'],
+      },
+    ],
+  },
+
   beyondCode: {
     badge: 'Beyond Code',
     title: 'What Drives Me',
