@@ -6,4 +6,5 @@ export * from './ExperienceSection';
 export * from './GitHubSection';
 export * from './CertificatesSection';
 export * from './BeyondCodeSection';
+export * from './ResumeSection';
 export * from './ContactSection';

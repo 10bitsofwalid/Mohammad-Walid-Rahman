@@ -17,6 +17,9 @@ import { ShieldCheck } from 'lucide-react';
 const BeyondCodeSection = lazy(() =>
   import('./components/sections/BeyondCodeSection').then((m) => ({ default: m.BeyondCodeSection }))
 );
+const ResumeSection = lazy(() =>
+  import('./components/sections/ResumeSection').then((m) => ({ default: m.ResumeSection }))
+);
 const ContactSection = lazy(() =>
   import('./components/sections/ContactSection').then((m) => ({ default: m.ContactSection }))
 );
@@ -74,6 +77,10 @@ export const App: React.FC = () => {
 
       <Suspense fallback={<SectionFallback />}>
         <BeyondCodeSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionFallback />}>
+        <ResumeSection />
       </Suspense>
 
       <Suspense fallback={<SectionFallback />}>

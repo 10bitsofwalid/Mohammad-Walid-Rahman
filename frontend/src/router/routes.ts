@@ -14,6 +14,8 @@ export const NAV_ROUTES: RouteItem[] = [
   { id: 'education', label: 'Education', path: '#education', isSectionLink: true },
   { id: 'github', label: 'GitHub Activity', path: '#github', isSectionLink: true },
   { id: 'certificates', label: 'Certificates', path: '#certificates', isSectionLink: true },
+  { id: 'beyond-code', label: 'Beyond Code', path: '#beyond-code', isSectionLink: true },
+  { id: 'resume', label: 'Resume', path: '#resume', isSectionLink: true },
   { id: 'contact', label: 'Contact', path: '#contact', isSectionLink: true },
 ];
 

@@ -239,4 +239,20 @@ export const PORTFOLIO_DATA = {
       },
     ],
   },
+
+  resume: {
+    badge: 'Resume / CV',
+    title: 'Curriculum Vitae',
+    subtitle: 'Explore my official resume detailing my experience, education, skills, and projects.',
+    fileUrl: ASSETS.resumePdf,
+    fileName: 'Mohammad_Walid_Rahman_CV.pdf',
+    lastUpdated: 'August 2026',
+    highlights: [
+      { label: 'Name', value: 'Mohammad Walid Rahman' },
+      { label: 'Role', value: 'Full Stack Developer' },
+      { label: 'Education', value: 'BSc in Software Engineering (DIU)' },
+      { label: 'Location', value: 'Dhaka, Bangladesh' },
+      { label: 'Availability', value: 'Open to Internship / Full-time' },
+    ],
+  },
 } as const;

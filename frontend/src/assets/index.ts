@@ -5,6 +5,7 @@ import chatapp from './chatapp.png';
 import budgettracker from './budgettracker.png';
 import certificate1 from './certificate1.png';
 import certificate2 from './certificate2.png';
+import resumePdf from './Mohammad_Walid_Rahman_CV.pdf';
 
 export const ASSETS = {
   logo: '/favicon.svg',
@@ -15,4 +16,5 @@ export const ASSETS = {
   budgettracker,
   certificate1,
   certificate2,
+  resumePdf,
 } as const;

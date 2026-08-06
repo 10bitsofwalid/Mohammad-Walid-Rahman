@@ -59,7 +59,14 @@ export const HeroSection: React.FC = () => {
               <ArrowRight className="w-4 h-4" />
             </a>
 
-            <a href="#contact" className="light-pill-btn hover:no-underline">
+            <a
+              href={ASSETS.resumePdf}
+              download="Mohammad_Walid_Rahman_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="light-pill-btn hover:no-underline"
+              aria-label="Download Resume PDF"
+            >
               <span>Download Resume</span>
               <Download className="w-4 h-4 text-gray-500 dark:text-gray-400" />
             </a>
