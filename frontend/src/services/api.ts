@@ -6,6 +6,8 @@ import { testimonialService } from './testimonialService';
 import { blogService } from './blogService';
 import { contactService } from './contactService';
 import { settingService } from './settingService';
+import { healthService } from './healthService';
+import { authService } from './authService';
 
 export const apiService = {
   getProjects: projectService.getAll,
@@ -18,6 +20,8 @@ export const apiService = {
   getBlogs: blogService.getAll,
   getSettings: settingService.getSettings,
   sendMessage: contactService.sendMessage,
+  getHealth: healthService.getHealth,
+  login: authService.login,
 };
 
 export * from './apiClient';
@@ -29,3 +33,5 @@ export * from './testimonialService';
 export * from './blogService';
 export * from './contactService';
 export * from './settingService';
+export * from './healthService';
+export * from './authService';

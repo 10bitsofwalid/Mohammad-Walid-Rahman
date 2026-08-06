@@ -8,12 +8,15 @@ export interface ApiResponse<T> {
 export interface Project {
   _id: string;
   title: string;
+  tagline?: string;
   description: string;
   longDescription?: string;
   coverImage?: string;
   tags: string[];
+  technologies?: string[];
   category: string;
   demoUrl?: string;
+  liveUrl?: string;
   githubUrl?: string;
   featured: boolean;
   order: number;
@@ -38,7 +41,7 @@ export interface Experience {
 export interface Skill {
   _id: string;
   name: string;
-  category: 'Frontend' | 'Backend' | 'DevOps' | 'Architecture' | 'Tools';
+  category: 'Frontend' | 'Backend' | 'DevOps' | 'Architecture' | 'Tools' | string;
   proficiency: number;
   icon?: string;
   featured: boolean;

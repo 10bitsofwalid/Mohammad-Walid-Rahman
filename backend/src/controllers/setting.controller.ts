@@ -7,11 +7,15 @@ export const getSettings = catchAsync(async (_req: Request, res: Response) => {
 
   if (!settings) {
     settings = await Setting.create({
-      siteTitle: 'Senior Software Engineer Portfolio',
-      bio: 'Architecting scalable web applications, distributed systems, and Apple-grade digital experiences.',
-      statusMessage: 'Open for high-impact technical consulting & engineering roles.',
+      siteTitle: 'Mohammad Walid Rahman | Full Stack Developer',
+      authorName: 'Mohammad Walid Rahman',
+      roleTitle: 'Full Stack Developer',
+      bio: 'Software Engineering undergraduate at Daffodil International University, building real projects to learn full-stack development — from C-based data structure systems to Node.js/Express APIs, React frontends and Cross Platforms.',
+      statusMessage: 'Open to Internship / Full-time Opportunities',
       availability: 'Available for work',
-      contactEmail: 'walid@example.com',
+      contactEmail: 'walidrahman.officials@gmail.com',
+      location: 'Uttara, Dhaka-1230, Bangladesh',
+      availabilityStatus: '🟢 Open to Opportunities',
       maintenanceMode: false,
     });
   }

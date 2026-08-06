@@ -8,6 +8,7 @@ import { Skill } from '../models/Skill.model.js';
 import { Education } from '../models/Education.model.js';
 import { Social } from '../models/Social.model.js';
 import { Setting } from '../models/Setting.model.js';
+import { Blog } from '../models/Blog.model.js';
 
 async function seedDatabase() {
   try {
@@ -24,18 +25,19 @@ async function seedDatabase() {
       Education.deleteMany({}),
       Social.deleteMany({}),
       Setting.deleteMany({}),
+      Blog.deleteMany({}),
     ]);
     console.log('Cleared existing collections.');
 
     // Seed Admin User
-    const passwordHash = await bcrypt.hash('AdminPassword123!', 12);
+    const passwordHash = await bcrypt.hash('walid-435-officials', 12);
     await User.create({
-      name: 'Admin Developer',
-      email: 'admin@example.com',
+      name: 'Mohammad Walid Rahman',
+      email: 'walidrahman.officials@gmail.com',
       passwordHash,
       role: 'admin',
     });
-    console.log('Created Admin User (admin@example.com / AdminPassword123!)');
+    console.log('Created Admin User (walidrahman.officials@gmail.com)');
 
     // Seed Projects
     await Project.insertMany([

@@ -9,6 +9,8 @@ import testimonialRoutes from './testimonial.routes.js';
 import messageRoutes from './message.routes.js';
 import settingRoutes from './setting.routes.js';
 
+import blogRoutes from './blog.routes.js';
+
 const router = Router();
 
 router.use('/auth', authRoutes);
@@ -20,5 +22,6 @@ router.use('/socials', socialRoutes);
 router.use('/testimonials', testimonialRoutes);
 router.use('/messages', messageRoutes);
 router.use('/settings', settingRoutes);
+router.use('/blogs', blogRoutes);
 
 export default router;

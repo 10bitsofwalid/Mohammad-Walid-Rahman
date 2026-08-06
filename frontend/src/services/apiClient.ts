@@ -17,10 +17,25 @@ export class ApiError extends Error {
 export async function apiClient<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const url = endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}${endpoint}`;
 
-  const headers: HeadersInit = {
+  let token: string | null = null;
+  try {
+    const authState = localStorage.getItem('portfolio_admin_auth');
+    if (authState) {
+      const parsed = JSON.parse(authState);
+      token = parsed?.state?.token || null;
+    }
+  } catch {
+    // Ignore storage parse error
+  }
+
+  const headers: Record<string, string> = {
     'Content-Type': 'application/json',
-    ...options?.headers,
+    ...(options?.headers as Record<string, string>),
   };
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
 
   try {
     const response = await fetch(url, {

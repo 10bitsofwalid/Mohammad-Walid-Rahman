@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuthStore } from '../../store/useAuthStore';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 import { GlassCard, Button, Input } from '../common';
-import { ShieldCheck, Lock, X, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, X, AlertCircle, Loader2 } from 'lucide-react';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -11,7 +11,9 @@ interface AdminLoginModalProps {
 }
 
 export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose, onSuccess }) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const { login } = useAuthStore();
 
@@ -22,17 +24,25 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
-    const success = login(password);
-    if (success) {
-      setPassword('');
-      onSuccess();
-      onClose();
-    } else {
-      setError('Invalid admin password. Please try again.');
+    try {
+      const success = await login(email, password);
+      if (success) {
+        setEmail('');
+        setPassword('');
+        onSuccess();
+        onClose();
+      } else {
+        setError('Invalid admin credentials. Access denied.');
+      }
+    } catch {
+      setError('Authentication error. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,7 +56,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -71,7 +81,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
                 Admin CMS Access
               </h3>
               <p id="admin-modal-desc" className="text-xs text-[var(--color-text-muted)]">
-                Authenticate to manage portfolio data
+                Secure Administrator Authentication
               </p>
             </div>
           </div>
@@ -97,25 +107,36 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
           )}
 
           <Input
-            label="Admin Master Password"
-            type="password"
-            placeholder="Enter password (e.g. admin123)"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            leftIcon={<Lock className="w-4 h-4" />}
+            label="Admin Email Address"
+            type="email"
+            placeholder="Enter admin email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            leftIcon={<Mail className="w-4 h-4" />}
+            required
             autoFocus
           />
 
-          <Button type="submit" fullWidth size="lg">
-            Unlock Admin CMS
+          <Input
+            label="Admin CMS Password"
+            type="password"
+            placeholder="Enter CMS password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            leftIcon={<Lock className="w-4 h-4" />}
+            required
+          />
+
+          <Button type="submit" fullWidth size="lg" disabled={loading}>
+            {loading ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" /> Authenticating...
+              </span>
+            ) : (
+              'Unlock Admin CMS'
+            )}
           </Button>
         </form>
-
-        <div className="text-center text-xs text-[var(--color-text-muted)] pt-2 border-t border-[var(--color-border-subtle)]">
-          Demo Master Passwords:{' '}
-          <code className="text-[var(--color-accent-primary)] font-mono">admin123</code> or{' '}
-          <code className="text-[var(--color-accent-primary)] font-mono">walid2024</code>
-        </div>
       </GlassCard>
     </div>
   );
