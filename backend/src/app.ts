@@ -35,12 +35,10 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(requestLogger);
 
 // HTTP Cache-Control Middleware for API GET routes
-app.use('/api', (req: Request, res: Response, next: NextFunction) => {
-  if (req.method === 'GET') {
-    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
-  } else {
-    res.setHeader('Cache-Control', 'no-store');
-  }
+app.use('/api', (_req: Request, res: Response, next: NextFunction) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   next();
 });
 

@@ -321,10 +321,19 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onCloseAdminView
 
   useEffect(() => {
     fetchAllData();
-    // Live Telemetry auto-refresh interval every 10 seconds
+    // Live Telemetry & Messages auto-refresh interval every 10 seconds
     const interval = setInterval(async () => {
-      const health = await healthService.getHealth();
-      setHealthData(health);
+      const [healthRes, msgRes] = await Promise.allSettled([
+        healthService.getHealth(),
+        contactService.getMessages(),
+      ]);
+
+      if (healthRes.status === 'fulfilled') {
+        setHealthData(healthRes.value);
+      }
+      if (msgRes.status === 'fulfilled' && Array.isArray(msgRes.value)) {
+        setMessages(msgRes.value);
+      }
     }, 10000);
 
     return () => clearInterval(interval);
