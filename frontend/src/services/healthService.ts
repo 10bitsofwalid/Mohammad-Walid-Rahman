@@ -18,7 +18,11 @@ export const healthService = {
   getHealth: async (): Promise<SystemHealthData> => {
     const startTime = performance.now();
     try {
-      const response = await fetch('/health');
+      const baseUrl = import.meta.env.VITE_API_URL;
+      const healthUrl = baseUrl
+        ? baseUrl.replace(/\/api\/v1\/?$/, '/health')
+        : '/health';
+      const response = await fetch(healthUrl);
       const endTime = performance.now();
       const latencyMs = Math.round(endTime - startTime);
 

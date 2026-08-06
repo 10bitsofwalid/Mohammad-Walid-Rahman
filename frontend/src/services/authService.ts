@@ -14,7 +14,8 @@ export interface AuthLoginResponse {
 
 export const authService = {
   login: async (email: string, password: string): Promise<AuthLoginResponse> => {
-    const url = '/api/v1/auth/login';
+    const baseUrl = import.meta.env.VITE_API_URL || '/api/v1';
+    const url = `${baseUrl}/auth/login`;
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
