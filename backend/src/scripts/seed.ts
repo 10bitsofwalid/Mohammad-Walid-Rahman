@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { env } from '../config/env.js';
+import { connectDB } from '../config/db.js';
 import { User } from '../models/User.model.js';
 import { Project } from '../models/Project.model.js';
 import { Experience } from '../models/Experience.model.js';
@@ -13,7 +12,7 @@ import { Blog } from '../models/Blog.model.js';
 async function seedDatabase() {
   try {
     console.log('Connecting to MongoDB...');
-    await mongoose.connect(env.MONGODB_URI);
+    await connectDB();
     console.log('Connected successfully!');
 
     // Clear existing data
