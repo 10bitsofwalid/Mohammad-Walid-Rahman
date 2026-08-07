@@ -36,14 +36,14 @@ npm run seed:backend           # seed DB w/ initial data
 
 ## Scripts (root)
 
-| Script | Does |
-|---|---|
-| `npm run dev` | frontend dev server |
+| Script                | Does                           |
+| --------------------- | ------------------------------ |
+| `npm run dev`         | frontend dev server            |
 | `npm run dev:backend` | backend dev server (tsx watch) |
-| `npm run build` | build backend then frontend |
-| `npm run typecheck` | typecheck both workspaces |
-| `npm run lint` | lint both workspaces |
-| `npm run format` | prettier format both |
+| `npm run build`       | build backend then frontend    |
+| `npm run typecheck`   | typecheck both workspaces      |
+| `npm run lint`        | lint both workspaces           |
+| `npm run format`      | prettier format both           |
 
 ## Docker
 
