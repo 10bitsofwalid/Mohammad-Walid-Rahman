@@ -20,7 +20,7 @@ export const PORTFOLIO_DATA = {
     instagram: 'https://www.instagram.com/maybee.walid',
     facebook: 'https://www.facebook.com/maybeee.walid',
     discord: 'https://discord.gg/f9FkewZQZS',
-    portfolio: 'https://walid-rahman-portfolio.vercel.app/',
+    portfolio: 'https://mohammad-walid-rahman-profile.vercel.app',
   },
   contact: {
     email: 'walidrahman.officials@gmail.com',
@@ -140,14 +140,14 @@ export const PORTFOLIO_DATA = {
       {
         degree: 'BSc in Software Engineering',
         institution: 'Daffodil International University',
-        period: '2021 – Present',
+        period: '2024 – 2028 (Expected)',
         description:
           'Pursuing a degree in Software Engineering with focus on full-stack development, data structures, system design, and web security fundamentals. Building real capstone projects alongside coursework.',
       },
       {
-        degree: 'Higher Secondary Certificate (Science)',
+        degree: 'Higher Secondary Certificate (HSC)',
         institution: 'Milestone College',
-        period: '2018 – 2020',
+        period: '2021 – 2023',
         description:
           'Science background with strong foundation in mathematics, physics and problem solving.',
       },
@@ -191,7 +191,8 @@ export const PORTFOLIO_DATA = {
         issuer: 'CodeSignal',
         issueDate: 'April 2026',
         credentialId: 'cmmmz4gj4009xi904zm7fl5rx',
-        credentialUrl: 'https://codesignal.com/learn/certificates/cmmmz4gj4009xi904zm7fl5rx/course-paths/85',
+        credentialUrl:
+          'https://codesignal.com/learn/certificates/cmmmz4gj4009xi904zm7fl5rx/course-paths/85',
         image: ASSETS.certificate2,
         tags: ['Java', 'Design Patterns', 'CS Fundamentals', 'Software Architecture'],
       },
@@ -243,16 +244,17 @@ export const PORTFOLIO_DATA = {
   resume: {
     badge: 'Resume / CV',
     title: 'Curriculum Vitae',
-    subtitle: 'Explore my official resume detailing my experience, education, skills, and projects.',
+    subtitle:
+      'Explore my official resume detailing my experience, education, skills, and projects.',
     fileUrl: ASSETS.resumePdf,
     fileName: 'Mohammad_Walid_Rahman_CV.pdf',
-    lastUpdated: 'August 2026',
+    lastUpdated: 'October 2026',
     highlights: [
       { label: 'Name', value: 'Mohammad Walid Rahman' },
-      { label: 'Role', value: 'Full Stack Developer' },
-      { label: 'Education', value: 'BSc in Software Engineering (DIU)' },
+      { label: 'Role', value: 'Aspiring Software Engineer' },
+      { label: 'Education', value: 'BSc in Software Engineering (DIU, 2024–2028)' },
       { label: 'Location', value: 'Dhaka, Bangladesh' },
-      { label: 'Availability', value: 'Open to Internship / Full-time' },
+      { label: 'Availability', value: 'Open to Internship / Junior Roles' },
     ],
   },
 } as const;
